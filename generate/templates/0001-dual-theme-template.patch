@@ -1,0 +1,98 @@
+From e7e2d1929a03dfdb0751343708d3311db0a9c400 Mon Sep 17 00:00:00 2001
+From: ole <gitlab+account@ole.mn>
+Date: Sat, 10 Dec 2022 07:04:58 +0100
+Subject: [PATCH] theme template
+
+---
+ src/kgx-terminal.c | 64 ++++++++++++++++++++++++++++++----------------
+ 1 file changed, 42 insertions(+), 22 deletions(-)
+
+diff --git a/src/kgx-terminal.c b/src/kgx-terminal.c
+index 26ca81d..85339f0 100644
+--- a/src/kgx-terminal.c
++++ b/src/kgx-terminal.c
+@@ -113,24 +113,42 @@ update_terminal_colors (KgxTerminal *self)
+   GdkRGBA fg;
+   GdkRGBA bg;
+ 
+-  // Workings of GDK_RGBA prevent this being static
+-  GdkRGBA palette[16] = {
+-    GDK_RGBA ("241f31"), // Black
+-    GDK_RGBA ("c01c28"), // Red
+-    GDK_RGBA ("2ec27e"), // Green
+-    GDK_RGBA ("f5c211"), // Yellow
+-    GDK_RGBA ("1e78e4"), // Blue
+-    GDK_RGBA ("9841bb"), // Magenta
+-    GDK_RGBA ("0ab9dc"), // Cyan
+-    GDK_RGBA ("c0bfbc"), // White
+-    GDK_RGBA ("5e5c64"), // Bright Black
+-    GDK_RGBA ("ed333b"), // Bright Red
+-    GDK_RGBA ("57e389"), // Bright Green
+-    GDK_RGBA ("f8e45c"), // Bright Yellow
+-    GDK_RGBA ("51a1ff"), // Bright Blue
+-    GDK_RGBA ("c061cb"), // Bright Magenta
+-    GDK_RGBA ("4fd2fd"), // Bright Cyan
+-    GDK_RGBA ("f6f5f4"), // Bright White
++  GdkRGBA palette[16];
++  GdkRGBA light_palette[16] = {
++    GDK_RGBA ("#LIGHT_COLOR_00#"), // Black
++    GDK_RGBA ("#LIGHT_COLOR_01#"), // Red
++    GDK_RGBA ("#LIGHT_COLOR_02#"), // Green
++    GDK_RGBA ("#LIGHT_COLOR_03#"), // Yellow
++    GDK_RGBA ("#LIGHT_COLOR_04#"), // Blue
++    GDK_RGBA ("#LIGHT_COLOR_05#"), // Magenta
++    GDK_RGBA ("#LIGHT_COLOR_06#"), // Cyan
++    GDK_RGBA ("#LIGHT_COLOR_07#"), // White
++    GDK_RGBA ("#LIGHT_COLOR_08#"), // Bright Black
++    GDK_RGBA ("#LIGHT_COLOR_09#"), // Bright Red
++    GDK_RGBA ("#LIGHT_COLOR_10#"), // Bright Green
++    GDK_RGBA ("#LIGHT_COLOR_11#"), // Bright Yellow
++    GDK_RGBA ("#LIGHT_COLOR_12#"), // Bright Blue
++    GDK_RGBA ("#LIGHT_COLOR_13#"), // Bright Magenta
++    GDK_RGBA ("#LIGHT_COLOR_14#"), // Bright Cyan
++    GDK_RGBA ("#LIGHT_COLOR_15#"), // Bright White
++  };
++  GdkRGBA dark_palette[16] = {
++    GDK_RGBA ("#DARK_COLOR_00#"), // Black
++    GDK_RGBA ("#DARK_COLOR_01#"), // Red
++    GDK_RGBA ("#DARK_COLOR_02#"), // Green
++    GDK_RGBA ("#DARK_COLOR_03#"), // Yellow
++    GDK_RGBA ("#DARK_COLOR_04#"), // Blue
++    GDK_RGBA ("#DARK_COLOR_05#"), // Magenta
++    GDK_RGBA ("#DARK_COLOR_06#"), // Cyan
++    GDK_RGBA ("#DARK_COLOR_07#"), // White
++    GDK_RGBA ("#DARK_COLOR_08#"), // Bright Black
++    GDK_RGBA ("#DARK_COLOR_09#"), // Bright Red
++    GDK_RGBA ("#DARK_COLOR_10#"), // Bright Green
++    GDK_RGBA ("#DARK_COLOR_11#"), // Bright Yellow
++    GDK_RGBA ("#DARK_COLOR_12#"), // Bright Blue
++    GDK_RGBA ("#DARK_COLOR_13#"), // Bright Magenta
++    GDK_RGBA ("#DARK_COLOR_14#"), // Bright Cyan
++    GDK_RGBA ("#DARK_COLOR_15#"), // Bright White
+   };
+ 
+   if (self->theme == KGX_THEME_AUTO) {
+@@ -151,14 +169,16 @@ update_terminal_colors (KgxTerminal *self)
+       bg = (GdkRGBA) { 0.05, 0.05, 0.05, 0.96 };
+       break;
+     case KGX_THEME_DAY:
+-      fg = (GdkRGBA) { 0.0, 0.0, 0.0, 0.0 };
+-      bg = (GdkRGBA) { 1.0, 1.0, 1.0, 1.0 };
++      fg = (GdkRGBA) { #LIGHT_FOREGRND_R#, #LIGHT_FOREGRND_G#, #LIGHT_FOREGRND_B#, #LIGHT_FOREGRND_A# };
++      bg = (GdkRGBA) { #LIGHT_BACKGRND_R#, #LIGHT_BACKGRND_G#, #LIGHT_BACKGRND_B#, #LIGHT_BACKGRND_A# };
++      memcpy(palette, light_palette, sizeof(light_palette));
+       break;
+     case KGX_THEME_NIGHT:
+     case KGX_THEME_AUTO:
+     default:
+-      fg = (GdkRGBA) { 1.0, 1.0, 1.0, 1.0};
+-      bg = (GdkRGBA) { 0.05, 0.05, 0.05, 0.96 };
++      fg = (GdkRGBA) { #DARK_FOREGRND_R#, #DARK_FOREGRND_G#, #DARK_FOREGRND_B#, #DARK_FOREGRND_A# };
++      bg = (GdkRGBA) { #DARK_BACKGRND_R#, #DARK_BACKGRND_G#, #DARK_BACKGRND_B#, #DARK_BACKGRND_A# };
++      memcpy(palette, dark_palette, sizeof(dark_palette));
+       break;
+   }
+ 
+-- 
+2.38.1
+

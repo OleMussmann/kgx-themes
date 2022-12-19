@@ -1,0 +1,74 @@
+From 2232b6a11fb2f319eb5abd1a7e8646c5a677c84f Mon Sep 17 00:00:00 2001
+From: ole <gitlab+account@ole.mn>
+Date: Sat, 10 Dec 2022 20:15:48 +0100
+Subject: [PATCH] mono theme template
+
+---
+ src/kgx-terminal.c | 40 ++++++++++++++++++++--------------------
+ 1 file changed, 20 insertions(+), 20 deletions(-)
+
+diff --git a/src/kgx-terminal.c b/src/kgx-terminal.c
+index 26ca81d..11d859d 100644
+--- a/src/kgx-terminal.c
++++ b/src/kgx-terminal.c
+@@ -115,22 +115,22 @@ update_terminal_colors (KgxTerminal *self)
+ 
+   // Workings of GDK_RGBA prevent this being static
+   GdkRGBA palette[16] = {
+-    GDK_RGBA ("241f31"), // Black
+-    GDK_RGBA ("c01c28"), // Red
+-    GDK_RGBA ("2ec27e"), // Green
+-    GDK_RGBA ("f5c211"), // Yellow
+-    GDK_RGBA ("1e78e4"), // Blue
+-    GDK_RGBA ("9841bb"), // Magenta
+-    GDK_RGBA ("0ab9dc"), // Cyan
+-    GDK_RGBA ("c0bfbc"), // White
+-    GDK_RGBA ("5e5c64"), // Bright Black
+-    GDK_RGBA ("ed333b"), // Bright Red
+-    GDK_RGBA ("57e389"), // Bright Green
+-    GDK_RGBA ("f8e45c"), // Bright Yellow
+-    GDK_RGBA ("51a1ff"), // Bright Blue
+-    GDK_RGBA ("c061cb"), // Bright Magenta
+-    GDK_RGBA ("4fd2fd"), // Bright Cyan
+-    GDK_RGBA ("f6f5f4"), // Bright White
++    GDK_RGBA ("002b36"), // Black
++    GDK_RGBA ("dc322f"), // Red
++    GDK_RGBA ("859900"), // Green
++    GDK_RGBA ("b58900"), // Yellow
++    GDK_RGBA ("268bd2"), // Blue
++    GDK_RGBA ("6c71c4"), // Magenta
++    GDK_RGBA ("2aa198"), // Cyan
++    GDK_RGBA ("93a1a1"), // White
++    GDK_RGBA ("657b83"), // Bright Black
++    GDK_RGBA ("dc322f"), // Bright Red
++    GDK_RGBA ("859900"), // Bright Green
++    GDK_RGBA ("b58900"), // Bright Yellow
++    GDK_RGBA ("268bd2"), // Bright Blue
++    GDK_RGBA ("6c71c4"), // Bright Magenta
++    GDK_RGBA ("2aa198"), // Bright Cyan
++    GDK_RGBA ("fdf6e3"), // Bright White
+   };
+ 
+   if (self->theme == KGX_THEME_AUTO) {
+@@ -151,14 +151,14 @@ update_terminal_colors (KgxTerminal *self)
+       bg = (GdkRGBA) { 0.05, 0.05, 0.05, 0.96 };
+       break;
+     case KGX_THEME_DAY:
+-      fg = (GdkRGBA) { 0.0, 0.0, 0.0, 0.0 };
+-      bg = (GdkRGBA) { 1.0, 1.0, 1.0, 1.0 };
++      fg = (GdkRGBA) { 0.345, 0.431, 0.459, 1.0 };
++      bg = (GdkRGBA) { 0.992, 0.965, 0.890, 1.00 };
+       break;
+     case KGX_THEME_NIGHT:
+     case KGX_THEME_AUTO:
+     default:
+-      fg = (GdkRGBA) { 1.0, 1.0, 1.0, 1.0};
+-      bg = (GdkRGBA) { 0.05, 0.05, 0.05, 0.96 };
++      fg = (GdkRGBA) { 0.345, 0.431, 0.459, 1.0 };
++      bg = (GdkRGBA) { 0.992, 0.965, 0.890, 1.00 };
+       break;
+   }
+ 
+-- 
+2.38.1
+
